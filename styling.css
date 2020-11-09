@@ -1,0 +1,146 @@
+body {
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-size: 18px;
+	
+	background-color: rosybrown;
+}
+
+h1 {
+	color: midnightblue;
+}
+
+h2:not(.navigation) {
+	color: midnightblue;;
+}
+
+h3:not(.navigation) {
+	color: midnightblue;;
+}
+
+h2.navigation {
+	margin: 6px 6px;
+}
+
+h3.navigation {
+	margin: 5px 5px;
+	padding-left: 5px;
+}
+
+div.navigation {
+	height: 100%;
+    width: 300px;
+    position: fixed;
+}
+
+ul.navigation {
+	display: block;
+    width: 100%;
+	
+	list-style-type: none;
+    margin: 45px;
+    padding: 0;
+	
+	border: solid;
+	border-color:midnightblue;;
+	border-width: 3px;
+	border-radius: 5px;
+}
+
+ul.navigation li {
+	display: inline;
+    width: 100%;
+	
+	border-bottom: solid;
+	border-bottom-color:midnightblue;
+	border-bottom-width: 3px;
+}
+
+ul.navigation li:last-child {
+	border-bottom: none;
+}
+
+ul.navigation li a {
+    display: block;
+    color: midnightblue;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+ul.navigation li a:hover {
+    background-color: midnightblue;
+    color: rgb(113, 113, 190);
+}
+
+div.main {
+	
+	width: 60%;
+	
+	position: absolute;
+	right: 0;
+	
+	padding-left: 70px;
+	padding-right: 70px;
+	
+	margin-bottom: 20px;
+	
+	text-align: justify;
+}
+
+span.ui_elem {
+	font-style: italic;
+	
+	color: white;
+	background-color: green;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+span.user_input {
+	font-weight: bold;
+	
+	color: white;
+	background-color: green;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+span.emphasized {
+	font-weight: bold;
+	font-style: italic;
+	
+	color: white;
+	background-color: green;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+span.list_item {
+	font-weight: bold;
+}
+
+figure {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+span.fig_cap_label {
+	font-weight: bold;
+}
+
+span.fig_cap_text {
+	font-style: italic;
+}
+
+pre {
+	display: block;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	color: white;
+	background-color: green;
+}
