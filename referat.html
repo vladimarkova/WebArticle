@@ -5,9 +5,9 @@
       <meta name="keywords" content="fetch API, XMLHttpRequests, pros and cons, Promises, introduction, Response, synchronous and asynchronous"/>
       <meta name="description" content="What is HTML and which are its basic elements"/>
       
-      <link href="styling.css" rel="stylesheet"></link>
+      <link href="styling/styling.css" rel="stylesheet"></link>
 
-      <link href = "fetch.jpeg" rel="icon" type="image/jpeg">
+      <link href = "images/fetch.jpeg" rel="icon" type="image/jpeg">
 
       <title>Fetch API and XHR</title>
     </head>
@@ -33,6 +33,8 @@
                 <li>
                     <a href="#asyncawait"><h3 class="navigation">Async/Await</h3></a></li>
                 <li>
+                    <a href="#ъдхъвкясдх"><h2 class="navigation">Обобщение</h2></a></li>
+                <li>
 					<a href="#sources"><h2 class="navigation">Използвана литература</h2></a></li>
 				<li>
 					<a href="#author"><h2 class="navigation">Автор</h2></a></li>
@@ -54,6 +56,10 @@
                                         
     document.write("New bill to pay!"); // Third 
 </pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 1.</span>
+    <span class="fig_cap_text">Отпечатване[<a href="#sources">7</a>]</span>
+</figcaption>  
 
                 <pre>
                 <script> 
@@ -68,7 +74,11 @@
                     
                     document.write("New bill to pay!"); // Third 
                 </script> 
-                </pre>               
+                </pre> 
+                <figcaption>
+                    <span class="fig_cap_label">Пр. код 2.</span>
+                    <span class="fig_cap_text">Резултат[<a href="#sources">7</a>]</span>
+                </figcaption>                
 
                 <p>Както може да видим, при изпълнението на горния код първоначално се изпълнява първият ред от кода: <strong>Hello,</strong>. Последван от втория: <strong>You</strong>. И след неговото завършване - третия: <strong>New bill to pay!</strong>
                 </p>
@@ -82,13 +92,17 @@
                 
                   
     setTimeout(() => { 
-        document.write("What happnes here..."); 
+        document.write("What happens here..."); 
         }, 2000); 
                   
                     
-    document.write("Goodbye!"); 
-                    
-</pre>          
+    document.write("Goodbye!");                    
+</pre>   
+
+<figcaption>
+    <span class="fig_cap_label">Пр. код 3.</span>
+    <span class="fig_cap_text">Отпечатване и функция setTimeout()[<a href="#sources">10</a>]</span>
+</figcaption>  
                 <p>
                     Така, ако изпълним този скрипт, ще видим, че това, което прави програмата е: изпълнява, както се очаква, първия ред от кода: <strong>Hello!</strong>, след което отпечатва реда с <strong>Goodbye!</strong> и накрая резултата от изпълнението на функцията <strong>setTimeout</strong>.
                     Тази функция се предава на web API за обработка, докато през това време изпълнението на останалия код продължава както обикновено.
@@ -97,10 +111,10 @@
                 </p>                    
 
                 <figure>
-                    <img class="art" src="s-as-calls.webp">
+                    <img class="art" src="images/s-as-calls.webp">
                     <figcaption>
                         <span class="fig_cap_label">Фиг. 1.</span>
-                        <span class="fig_cap_text">Синхронни и/или асинхронни процеси[<a href="#references">1</a>]</span>
+                        <span class="fig_cap_text">Синхронни и/или асинхронни процеси[<a href="#sources">10</a>]</span>
                     </figcaption>
                 </figure>
                            
@@ -115,7 +129,8 @@
                     също и JSON, HTML или plain text. 
                     Твърди се, че оригиналната идея зад XMLHttpRequests обектите произхожда от
                     създателите на Outlook Web Access(Microsoft). 
-                    Следва примерен код, който да покаже принципа на работа на XHR.  „
+                    Следва примерен код, който да покаже принципа на работа на XHR:
+                </p>
     <pre>
         function success() {
           var data = JSON.parse(this.responseText);
@@ -131,7 +146,14 @@
         xhr.onerror = error;
         xhr.open('GET', 'https://api.github.com/users/swapnilbangare');
         xhr.send();
-    </pre>   
+    </pre> 
+
+    <figcaption>
+        <span class="fig_cap_label">Пр. код 4.</span>
+        <span class="fig_cap_text">XHR обекти[<a href="#sources">3</a>]</span>
+    </figcaption>  
+
+                    <p>
                     Нуждаем се от два слушателя, настроени да обработват съответно случаите на успех и грешка и от извикване на open() и send().
                     Резултатът от отговора на сървъра се съхранява в променливата responseText, която се конвертира до JavaScript обект, чрез JSON.parse().
                     <h4>Подробна информация за свойствата и методите на XHR обектите може да се намери <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">тук.</a></h4>
@@ -162,7 +184,11 @@
                 <h3>Преди и след AJAX</h3> 
                 <p>
                     <p><h4>"Ще довърша по-късно!"</h4></p>
-                    <img src="running.jpg">
+                    <img src="images/running.jpg">
+                    <figcaption>
+                        <span class="fig_cap_label">Фиг. 2.</span>
+                        <span class="fig_cap_text">[<a href="https://www.google.com/search?q=running&tbm=isch&ved=2ahUKEwjq54qbpvbsAhVgDGMBHWETCUYQ2-cCegQIABAA&oq=running&gs_lcp=CgNpbWcQAzIECAAQQzIECAAQQzICCAAyAggAMgQIABBDMgIIADICCAAyAggAMgIIADICCABQ2LQEWNi0BGDVxgRoAHAAeACAAbQBiAG0AZIBAzAuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=JKapX-rFH-CYjLsP4aaksAQ&client=ubuntu&hs=gGH#imgrc=cfwvWPWPXq70hM">Running</a>]</span>
+                    </figcaption>
                     <br />
                     Преди да бъде представена <span class="emphasized">AJAX</span> или <span class="emphasized">Asynchronous JavaScript and XML</span> концепцията, за да се обнови
                     някаква част от дадена уеб страница, беше ноебходимо браузърите да правят заявка за цялата уеб страница и след получаването сървърът я обработваше чрез 
@@ -195,10 +221,10 @@
                         <li>JavaScript изпълнява подходящото действие(като например обновяване на страницата).</li>
                     </ol>
                     <figure>
-                        <img class="art" src="ajax.gif">
+                        <img class="art" src="images/ajax.gif">
                         <figcaption>
-                            <span class="fig_cap_label">Фиг. 2.</span>
-                            <span class="fig_cap_text">Схема на работа на AJAX[<a href="#references">2</a>]</span>
+                            <span class="fig_cap_label">Фиг. 3.</span>
+                            <span class="fig_cap_text">AJAX[<a href=#sources>7</a>]</span>
                         </figcaption>
                     </figure>
                 </p>
@@ -208,7 +234,11 @@
                 <h3>Callback функции</h3> 
 
                 <p><h4>"Ще се обадя по-късно!"</h4></p>
-                <img src="snowmen.png">
+                <img src="images/snowmen.png">
+                <figcaption>
+                    <span class="fig_cap_label">Фиг. 4.</span>
+                    <span class="fig_cap_text">[<a href="https://www.google.com/search?q=I+will+call+back+later!&client=ubuntu&hs=nkl&channel=fs&sxsrf=ALeKk01IOBbNQluMQjg7DgkkVB9qlbIABQ:1604991377654&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi31LrnsvfsAhVErxoKHf5kAyUQ_AUoAXoECA0QAw&biw=1294&bih=667#imgrc=0ETVKFeeP4lseM">Snowmen</a>]</span>
+                </figcaption>
                 <br />
                 
                 <p><span class="emphasized">Callback функциите</span> по същество са функции, които се подават като аргумент на други функции.
@@ -234,6 +264,11 @@
       
       getFile(myDisplayer);
 </pre>   
+<figcaption>
+    <span class="fig_cap_label">Пр. код 5.</span>
+    <span class="fig_cap_text">Callback функции[<a href="#sources">5</a>]</span>
+</figcaption>  
+
                 <p>
                     В този случай myDisplayer е използвана като callback функция. Името е предадено като аргумент на функцията getFile.
                     В нея се създава обект от тип XMLHTTPRequest, който отваря файла "mycar.html", зарежда функция и в зависимост от обработката
@@ -277,6 +312,10 @@
     }
     })
 </pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 6.</span>
+    <span class="fig_cap_text">Callback hell[<a href="#sources">9</a>]</span>
+</figcaption>  
                 <p>
                     Причината за получаването на този callback ад е това, че хората опитват да пишат JavaScript по начин, където
                     изпълнението се случва от началото до края. В езици като C, Ruby или Python се очаква, че каквото се изпълнява на ред 1 ще приключи преди
@@ -313,7 +352,68 @@
                 Това, което Fetch ни позволява, е да правим запитвания от браузъра към сървъра, подобни на тези с XMLHTTPRequest. Основната разлика е тази в представянето. Fetch е
                 техника, чрез която тези асинхронни заявки и обработката им се случват по-бързо и по-леко в сравнение с по-старата XMLHTTPRequest техника, то е нейното подобрение.
                 В начина на работа разликата е в това, че Fetch използва Promises, които подробно разглеждаме в следващия параграф, докато XHR ни оставя проблема на т.нар. callback ад(callback hell).
-                
+                Fetch API има следния интерфейс: 
+                <ul>
+                    <br />
+                    <li>fetch() - методът се използва за извличане на ресурс</li>
+                    <br />
+                    <li>Headers - представляват Response/Request header-и(header-и за отговор и заявка), позволяващи ни да изпращаме запитвания към тях
+                    и да предприемаме различни действия в зависимост от резултатите.</li>
+                    <br />
+                    <li>Request - представлява заявка към ресурс</li>
+                    <br />
+                    <li>Response - представлява отговора на заявката</li>
+                    <br />
+                </ul>
+                <strong>Как правим заявка, изплозвайки <em>fetch()</em>?</strong>
+                Всяка fetch() функция е достъпна през глобалния Window обект. Тя приема един задължителен аргумент- 
+                пътят към ресурса, който искаме да извлечем. Връща обект от тип Promise, независимо дали е успешен, или не.    
+                Ако заявката е успешна, then() функцията получава обект от тип Response, ако се е провалила, catch() функцията 
+                получава обект error. 
+                </p>
+<pre>
+    fetch('https://api.github.com/users/swapnilbangare')
+  .then(function (response) {
+    console.log(response);
+    })
+  .catch(function (err) {
+    console.log("Something went wrong!", err);
+    });
+</pre>   
+
+<figcaption>
+    <span class="fig_cap_label">Пр. код 7.</span>
+    <span class="fig_cap_text">fetch() функцията[<a href=#sources>5</a>]</span>
+</figcaption> 
+                <h4>Response обекти</h4>
+                <p>
+                    Както можем да видим в кода по-горе Fetch API се използва, за да се направи извикване към GitHUb
+                    и да се извлече информация за потребител. Когато Promise е уреден, връща обект от тип Response. Но, ако
+                    опитаме да отпечатим същия този обект на конзолата, ще видим, че не съдържа информацията, която искаме. Той всъщност
+                    съдържа информация за самия отговор. Ако искаме наистина да вземем данните, трябва да вземем съдържанието на този отговор.
+                    В случая върнатият отговор ще има .json метод. Така че трябва да извикаме .json метода на променливата с отговора.
+                    Но това връща обект от тип Promise, откъдето следва, че трябва да имаме във веригата още един .then()
+                    метод, чрез който да достъпим желаните данни. Съответно .catch() методът се грижи за обработката на евентулано възникнали грешки. 
+                    
+                </p>
+
+                <h4>Headers обекти</h4>
+                <p>
+                    Headers обектите ни позволяват чрез Headers() конструктора да създаваме такива обекти. 
+                    Един такъв обект е група от двойки от тип име-стойност.(name-value pairs). 
+                </p>
+
+                <h4>Опции на fetch()</h4>
+                <p>
+                    fetch() методът може да приема незадължителен втори параметър, т.нар. init обект, чрез който
+                    може да специфицираме заявката. 
+                </p>
+
+                <h4>Request обекти</h4>
+                <p>
+                    Request обектите представляват заявка към даден ресурс. Вместо да предаваме url-а на ресурса във 
+                    fetch() извикването, може да създадем обект от тип заявка чрез Request()конструктора и да подадем това като
+                    аргумент на fetch(). По този начин може да правим персонализирани заявки.  
                 </p>
             </article> 
      
@@ -321,7 +421,11 @@
                 <h3>Promises</h3> 
                 
                 <p><h4>"Обещавам!"</h4></p>
-                    <img src="promises.jpeg">
+                    <img src="images/promises.jpeg">
+                    <figcaption>
+                        <span class="fig_cap_label">Фиг. 5.</span>
+                        <span class="fig_cap_text">[<a href="">Promise</a>]</span>
+                    </figcaption>
 
                 <p><span class="emphasized">Promise</span> е обект, който представлява нещо, което щше бъде достъпно в бъдещето.
                     Това нещо всъщност е някаква стойност. Promises позволяват вместо да чакаме дадена стойност, която искаме, да получим
@@ -368,9 +472,105 @@
                 <h3>Aync/Await</h3> 
                 
                 <p><span class="emphasized">Async/Await</span>
-                
+                    Async/Await е възможност за работа с Promises, която ни позволява да пишем Promises, които да основани
+                    на асинхронен код, но правят асинхронния код да изглежда и да се държи до голяма степен като синхронен. 
+                    Чрез ключовата дума async създаваме асинхронна функция, което ознчава, че тя ще работи във фонов режим.
+                    Вътре в самата async функция може да имаме няколко await функции(пред тях стои ключовата дума await). По този начин
+                    изчакваме да бъде върнат вече уредения резултат от съответния Promise. Async функциите връщат обект от тип Promise. Това означава, 
+                    че, за да достъпим резултата, трябва да използваме методът then(), който всеки Promise има. 
                 </p>
-            </article>            
+            </article>   
+            
+            <article id="conclusion">
+                <h2>Обобщение</h2> 
+
+                <img src="images/fetch.jpeg">
+                <figcaption>
+                    <span class="fig_cap_label">Фиг. 6.</span>
+                    <span class="fig_cap_text">[<a href="">fetch()</a>]</span>
+                </figcaption> 
+
+                <p>
+                    Да обобщим, първоначалният замисъл и идея за използване на <span class="emphasized">XMLHTTPRequests</span> определно не са били 
+                    пряко за нещата, които използваме днес. И в някои случаи неговият API с право може да ви се стори 
+                    доста объркващ. <span class="emphasized">FETCH API</span> ни предла един по-лек и изчистен начин да правим асинхронни заявки и да обработваме отговорите.
+                    Fetch дава възможност да се създаде далеч по-добър API като се използват съвременни елементи на JavaScript, каквито са Prmoises.  
+                </p>
+            </article>         
+            
+            <article id="sources">
+                <h2>Използвана литература</h2>
+<pre class="sr">
+ [1] The Fetch API. A modern replacement for XMLHttpRequest,
+ [<a href="https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c">https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c</a>], 
+ последно посетен на 2020-11-10 
+</pre>
+
+<pre class="sr">
+ [2] Fetch API-Web APIs|MDN,
+ [<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>], 
+ последно песетен на 2020-11-10
+</pre>   
+
+<pre class="sr">
+ [3] XMLHTTPRequest-Web APIs|MDN, 
+ [<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a>], 
+ последно песетен на 2020-11-10
+</pre>   
+
+<pre class="sr">
+ [4] Introduction to fetch(), 
+ [<a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">https://developers.google.com/web/updates/2015/03/introduction-to-fetch</a>], 
+ последно песетен на 2020-11-10
+</pre>  
+
+<pre class="sr">
+ [5] JavaScript Async, 
+ [<a href="https://www.w3schools.com/js/js_async.asp">https://www.w3schools.com/js/js_async.asp</a>], 
+ последно песетен на 2020-11-10
+</pre>  
+
+<pre class="sr">
+ [6] ECMAScript-Wikipedia, 
+ [<a href="https://en.wikipedia.org/wiki/ECMAScript">https://en.wikipedia.org/wiki/ECMAScript</a>], 
+ последно песетен на 2020-11-10
+</pre>  
+
+<pre class="sr">
+ [7] AJAX Introduction, 
+ [<a href="https://www.w3schools.com/xml/ajax_intro.asp">https://www.w3schools.com/xml/ajax_intro.asp</a>], 
+ последно песетен на 2020-11-10
+</pre> 
+
+<pre class="sr">
+ [8] Callbach Hell, Promises and Async/Await  
+ [<a href="https://www.w3schools.com/xml/ajax_intro.asp">https://www.w3schools.com/xml/ajax_intro.asp</a>], 
+ последно песетен на 2020-11-10
+</pre> 
+
+<pre class="sr">
+ [9] Callback Hell 
+ [<a href="http://callbackhell.com/">http://callbackhell.com/</a>], 
+ последно песетен на 2020-11-10
+</pre> 
+
+<pre class="sr">
+ [10] Synchronous vs. Asynchronous Request Handling|Trigent-Vintage
+ [<a href="https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/">https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/</a>],
+</pre> 
+
+            <article  id="author">
+                            <h2>Автор</h2>
+                            <ul class="aut">
+                                <li>Владислава Венциславова Маркова</li>
+                                <li>E-mail: vladislavam1996@gmail.com</li>
+                                <li>ФН: 81271</li>
+                                <li>спец. Компютърни науки, IV курс, II поток, VI група, 2020/2021 г.</li>
+                                <li>курс: Web технологии</li>
+                                <li>лектор: доц. Милен Петров</li>
+                                <li>2020 г.</li>
+                            </ul>	
+            </article>     
         </div>
     </body>
 </html>

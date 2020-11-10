@@ -55,6 +55,10 @@ ul.navigation {
 	border-radius: 10px 10px;
 }
 
+ul.aut {
+	list-style-type: square;
+}
+
 ul.navigation li {
 	display: inline;
     width: 100%;
@@ -102,24 +106,6 @@ div.main {
 	text-align: justify;
 }
 
-span.ui_elem {
-	font-style: italic;
-	
-	color: white;
-	background-color: rgb(79, 79, 94);
-	padding-left: 2px;
-	padding-right: 2px;
-}
-
-span.user_input {
-	font-weight: bold;
-	
-	color: white;
-	background-color: mrgb(79, 79, 94);
-	padding-left: 2px;
-	padding-right: 2px;
-}
-
 span.emphasized {
 	font-weight: bold;
 	font-style: oblique;
@@ -161,7 +147,7 @@ span.fig_cap_text {
 	font-style: italic;
 }
 
-pre {
+pre:not(.sr) {
 	display: block;
 	
 	padding-top: 10px;
@@ -171,4 +157,17 @@ pre {
 	
 	color: white;
 	background-color: rgb(79, 79, 94);
+}
+
+pre.sr {
+	display: block;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	padding-right: 10px;
+	width: 850px;
+	
+	color: rgb(24, 26, 119);
+	background-color: rgb(196, 196, 204);
 }
