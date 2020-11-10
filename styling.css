@@ -49,10 +49,10 @@ ul.navigation {
     margin: 45px;
     padding: 0;
 	
-	border: solid;
+    border: solid;
 	border-color:midnightblue;;
-	border-width: 3px;
-	border-radius: 5px;
+	border-width: 2px;
+	border-radius: 10px 10px;
 }
 
 ul.navigation li {
@@ -61,7 +61,8 @@ ul.navigation li {
 	
 	border-bottom: solid;
 	border-bottom-color:midnightblue;
-	border-bottom-width: 3px;
+    border-bottom-width: 3px;
+    border-radius: 2px;
 }
 
 ul.navigation li:last-child {
@@ -75,7 +76,13 @@ ul.navigation li a {
     text-decoration: none;
 }
 
-ul.navigation li a:hover {
+ul.navigation li a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+
+ul.navigation li a:hover:not(.active) {
     background-color: midnightblue;
     color: rgb(230, 220, 203);
 }
