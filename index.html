@@ -6,6 +6,9 @@
       <meta name="description" content="What is HTML and which are its basic elements"/>
       
       <link href="styling.css" rel="stylesheet"></link>
+
+      <link href = "fetch.jpeg" rel="icon" type="image/jpeg">
+
       <title>Fetch API and XHR</title>
     </head>
 
@@ -15,22 +18,197 @@
 				<li>
 					<a href="#top"><h2 class="navigation">Начало</h2></a></li>
                 <li>
-					<a href="#layout"><h2 class="navigation">1</h2></a></li>  
+					<a href="#calls"><h2 class="navigation">Синхронни и асинхронни извиквания</h2></a></li>  
                 <li>
-					<a href="#display"><h3 class="navigation">2</h3></a></li>
+                    <a href="#xhr"><h2 class="navigation">XHR</h2></a></li>  
                 <li>
-					<a href="#box_model"><h2 class="navigation">3</h2></a>
+                    <a href="#ajax"><h3 class="navigation">B&A AJAX</h3></a></li>
                 <li>
-					<a href="#height_weight"><h3 class="navigation">4</h3></a></li>
                 <li>
-                    <a href="#margin_padding"><h3 class="navigation">5</h3></a></li>
+                    <a href="#callbacks"><h3 class="navigation">Callback функции</h3></a></li>
+                <li>
+                    <a href="#fetchapi"><h2 class="navigation">Fetch API</h2></a></li>
+                <li>
+                    <a href="#promises"><h3 class="navigation">Promises</h3></a></li>
+                <li>
+					<a href="#sources"><h2 class="navigation">Използвана литература</h2></a></li>
 				<li>
-					<a href="#developer_tools"><h3 class="navigation">6</h3></a></li>
-				<li>
-					<a href="#references"><h2 class="navigation">7</h2></a></li>
-				<li>
-					<a href="#student"><h2 class="navigation">8</h2></a></li>
+					<a href="#author"><h2 class="navigation">Автор</h2></a></li>
             </ul>
+        </div>
+        <div class="main">
+            <h1>Fetch API and XHR (vs.?)</h1>
+            <article id="calls">
+                <h2>Синхронни и асинхронни извиквания</h2> 
+                <p>Много важно е да знаем разликата между синхронни и асинхронни извиквания, както и кога, какво и как да използваме. 
+                    <h3><strong>Синхронни заявки</strong></h3>
+                    Както се подразбира от името, синхронни означава, че се изпълняват в някаква последователност, тоест всеки statement в даден код
+                    се изпълнява след този преди него, трябва да се изчака предният да е завършил, за да бъде изпълнен текущият.
+                </p>
+ <pre>
+    document.write("Hello,"); // First  
+
+    document.write("You") ;// Second 
+                                        
+    document.write("New bill to pay!"); // Third 
+</pre>
+
+                <pre>
+                <script> 
+                    document.write("<br>"); 
+                    document.write("Hello,"); // First
+                    document.write("<br>"); 
+                    document.write("<br>"); 
+
+                    document.write("You") ;// Second 
+                    document.write("<br>"); 
+                    document.write("<br>"); 
+                    
+                    document.write("New bill to pay!"); // Third 
+                </script> 
+                </pre>               
+
+                <p>Както може да видим, при изпълнението на горния код първоначално се изпълнява първият ред от кода: <strong>Hello,</strong>. Последван от втория: <strong>You</strong>. И след неговото завършване - третия: <strong>New bill to pay!</strong>
+                </p>
+                <h3><strong>Асинхронни заявки</strong></h3>
+                <p>
+                    Асинхронният код позволява части от програмата да бъдат изпълнявани веднага, докато синхрониият би блокирал по-нататъшно изпълнение на останалата част от кода, докато не приключи изпълнението на текущата. 
+                    И дори това да не изглежда като чак толкова голям проблем, погледнато в една по-обща и голяма картина, би довело до значително и нежелано забавяне, рефлектиращо върху потребителския интерфейс.
+                </p>
+<pre>
+    document.write("Hello!"); 
+                
+                  
+    setTimeout(() => { 
+        document.write("What happnes here..."); 
+        }, 2000); 
+                  
+                    
+    document.write("Goodbye!"); 
+                    
+</pre>          
+                <p>
+                    Така, ако изпълним този скрипт, ще видим, че това, което прави програмата е: изпълнява, както се очаква, първия ред от кода: <strong>Hello!</strong>, след което отпечатва реда с <strong>Goodbye!</strong> и накрая резултата от изпълнението на функцията <strong>setTimeout</strong>.
+                    Тази функция се предава на web API за обработка, докато през това време изпълнението на останалия код продължава както обикновено.
+                    По този начин тя не блокира останалата част от кода, докато приключи, а се добява към <span class="emphasized">call stack-а</span> и накрая бива изпълнена.
+                    Това е възможно, благодарение на асинхронната обработка. 
+                </p>                    
+
+                <figure>
+                    <img class="art" src="s-as-calls.webp">
+                    <figcaption>
+                        <span class="fig_cap_label">Фиг. 1.</span>
+                        <span class="fig_cap_text">Синхронни и/или асинхронни процеси[<a href="#references">1</a>]</span>
+                    </figcaption>
+                </figure>
+                           
+            </article>
+
+            <article id="xhr">
+                <h2>XHR</h2> 
+                <p><span class="emphasized">XMLHttpRequests</span> или накратко <span class="emphasized">XHR</span> обектите 
+                    се използват за асинхронно извличане на данни. Преди близо 14 години World Wide Web Консорциумът публикува спецификация на работния проект
+                    за XHR. В ранните етапи XMLHttpRequests се използва за извличане на XML данни през HTTP, откъдето идва и името. 
+                    Но в днешно време може да се използва и с протоколи, различни от HTTP, и да извлича данни не само в XML формат, но
+                    също и JSON, HTML или plain text. 
+                    Твърди се, че оригиналната идея зад XMLHttpRequests обектите произхожда от
+                    създателите на Outlook Web Access(Microsoft). 
+                    Следва примерен код, който да покаже принципа на работа на XHR.  „
+    <pre>
+        function success() {
+          var data = JSON.parse(this.responseText);
+            console.log(data);
+            }
+    
+        function error(err) {
+            console.log('Error Occurred :', err);
+            }
+    
+        var xhr = new XMLHttpRequest();
+        xhr.onload = success;
+        xhr.onerror = error;
+        xhr.open('GET', 'https://api.github.com/users/swapnilbangare');
+        xhr.send();
+    </pre>   
+                    Нуждаем се от два слушателя, настроени да обработват съответно случаите на успех и грешка и от извикване на open() и send().
+                    Резултатът от отговора на сървъра се съхранява в променливата responseText, която се конвертира до JavaScript обект, чрез JSON.parse().
+                    Събитията, свързани с асинхронната обработка на данни чрез XHR са следните: 
+                    <ul>
+                        <li>abort - настъпва при прекъсване на заявката, например при извикване на XMLHttpRequest.abort()</li>
+                        <br />
+                        <li>error - настъпва при откриване на грешка</li>
+                        <br />
+                        <li>load - настъпва при успешно завършване на XMLHttpRequest транзакцията</li>
+                        <br />
+                        <li>loadend - настъпва след приключване на заявката, независимо дали успешно(след load()), или неуспешно(след abort() или error())</li>
+                        <br />
+                        <li>loadstart - настъпва, когато заявката започва да зарежда данните</li>
+                        <br />
+                        <li>progress - настъпва периодично, когато заявката получава още данни</li>
+                        <br />
+                        <li>timeout - настъпва при спиране на прогреса, поради изтичане на зададен времеви лимит</li>
+                    <br />
+                    В продължение на години XMLHTTPRequest се използва за изпращане, обработване и извличане на информация в различни формати от 
+                    уеб браузър към сървър. Идва момента, в който се питаме: Дали няма по-чист и по-прост API за това?
+                    Е, оказва се, че има. За да разберем, трябва да се върнем в бъдещето. 
+                    <br />
+                    <a href="#fetchapi"><h4 class="navigation">Завръщане в бъдещето</h4></a>
+                    </p>             
+
+            <article id="ajax">
+                <h3>Преди и след AJAX</h3> 
+                <p>
+                    <p><h4>"Ще довърша по-късно!"</h4></p>
+                    <img src="running.jpg">
+                    <br />
+                    Преди да бъде представена <span class="emphasized">AJAX</span> или <span class="emphasized">Asynchronous JavaScript and XML</span> концепцията, за да се обнови
+                    някаква част от дадена уеб страница, беше ноебходимо браузърите да правят заявка за цялата уеб страница и след получаването сървърът я обработваше чрез 
+                    създаване и връщане на цяла страница към браузъра. Както вече споменахме по-горе, дори за една малка промяна
+                    страницата се презарежда изцяло. А това е нежелано. Именно AJAX променя този традиционен начин на обновяване на уеб страница.
+                    AJAX е техниката, чрез която уеб приложенията получават възможността да изпращат и извличат данни от сървъра асинхронно(в заден план) без това
+                    променя визуализирането и поведението на съществуващата страница. Използва комбинация от:
+                    <ul>
+                        <li>XMLHttpRequest обект, вграден в браузъра(за заявка за данни към сървъра)</li>
+                        <br />
+                        <li>JavaScript и HTML DOM(за визуализиране и използване на данните)</li>
+                    </ul>
+                    <h4>Повече и интересна информация за <strong>DOM(Document Object Model) </strong>като стандарт за извличане, променяне, добавяне или триене на HTML елементи, може да намерите <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">тук.</a></h4> 
+                    Основните стъпки в работата с данните са следните:
+                    <ol>
+                        <li>Появява се събитие на уеб страницата(страница е заредена или бутон е натиснат)</li>
+                        <br />
+                        <li>JavaScript създава XMLHttpRequest обект</li>
+                        <br />
+                        <li>XMLHttpRequest обектът изпраща заявка към сървъра</li>
+                        <br />
+                        <li>Сървърът обработва заявката</li>
+                        <br />
+                        <li>Сървърът изпраща отговор обратно към уеб страницата</li>
+                        <br />
+                        <li>Отговорът се прочита от JavaScript</li>
+                        <br />
+                        <li>JavaScript изпълнява подходящото действие(като например обновяване на страницата).</li>
+                    </ol>
+                    <figure>
+                        <img class="art" src="ajax.gif">
+                        <figcaption>
+                            <span class="fig_cap_label">Фиг. 2.</span>
+                            <span class="fig_cap_text">Схема на работа на AJAX[<a href="#references">2</a>]</span>
+                        </figcaption>
+                    </figure>
+                </p>
+            </article>
+
+            <br />
+            <p><h3>"Необходимостта е майка на всички изобретения."</h3></p>
+            <br />
+            <article id="fetchapi">
+                <h2>Fetch API</h2> 
+                
+                <p><span class="emphasized">Fetch API</span> е нов и изцяло JavaScript API(Application Programming Interface), поддържан от повечето браузъри в днешно време.
+                Това, което Fetch ни позволява, е да правим запитвания от браузъра към сървъра, подобни на тези с XMLHTTPRequest. 
+                </p>
+            </article>              
         </div>
     </body>
 </html>

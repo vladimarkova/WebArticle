@@ -1,12 +1,13 @@
 body {
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	
-	background-color: rosybrown;
+	background-color: wheat;
 }
 
 h1 {
-	color: midnightblue;
+    color: midnightblue;
+    text-align: center;
 }
 
 h2:not(.navigation) {
@@ -17,6 +18,10 @@ h3:not(.navigation) {
 	color: midnightblue;;
 }
 
+h4:not(.navigation) {
+	color: midnightblue;
+}
+
 h2.navigation {
 	margin: 6px 6px;
 }
@@ -24,6 +29,10 @@ h2.navigation {
 h3.navigation {
 	margin: 5px 5px;
 	padding-left: 5px;
+}
+
+h4.navigation {
+	margin: 4px 4px;
 }
 
 div.navigation {
@@ -68,7 +77,7 @@ ul.navigation li a {
 
 ul.navigation li a:hover {
     background-color: midnightblue;
-    color: rgb(113, 113, 190);
+    color: rgb(230, 220, 203);
 }
 
 div.main {
@@ -90,7 +99,7 @@ span.ui_elem {
 	font-style: italic;
 	
 	color: white;
-	background-color: green;
+	background-color: rgb(79, 79, 94);
 	padding-left: 2px;
 	padding-right: 2px;
 }
@@ -99,17 +108,17 @@ span.user_input {
 	font-weight: bold;
 	
 	color: white;
-	background-color: green;
+	background-color: mrgb(79, 79, 94);
 	padding-left: 2px;
 	padding-right: 2px;
 }
 
 span.emphasized {
 	font-weight: bold;
-	font-style: italic;
+	font-style: oblique;
 	
-	color: white;
-	background-color: green;
+	color: rgb(20, 17, 53);
+	background-color: rgb(172, 172, 194);
 	padding-left: 2px;
 	padding-right: 2px;
 }
@@ -122,8 +131,20 @@ figure {
 	text-align: center;
 	display: block;
 	margin-left: auto;
-	margin-right: auto;
+    margin-right: auto;
+    border-radius: 50%;
 }
+
+img:not(.art) {
+    border-radius: 8px;
+    width: 100px;
+    height: 100px;
+}
+
+img{
+    border-radius: 8px;
+    width: 50%;
+  }
 
 span.fig_cap_label {
 	font-weight: bold;
@@ -138,9 +159,9 @@ pre {
 	
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 10px;
+	padding-left: 0px;
 	padding-right: 10px;
 	
 	color: white;
-	background-color: green;
+	background-color: rgb(79, 79, 94);
 }
