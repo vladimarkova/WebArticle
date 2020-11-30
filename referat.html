@@ -80,7 +80,7 @@
                     <span class="fig_cap_text">Резултат[<a href="#sources">7</a>]</span>
                 </figcaption>                
 
-                <p>Както може да видим, при изпълнението на горния код първоначално се изпълнява първият ред от кода: <strong>Hello,</strong>. Последван от втория: <strong>You</strong>. И след неговото завършване - третия: <strong>New bill to pay!</strong>
+                <p>Както може да видим, при изпълнението на горния код първоначално се изпълнява първият ред от кода: <strong>Hello,</strong>. Последван от втория: <strong>You</strong>. И след неговото завършване - третият: <strong>New bill to pay!</strong>
                 </p>
                 <h3><strong>Асинхронни заявки</strong></h3>
                 <p>
@@ -93,7 +93,7 @@
                   
     setTimeout(() => { 
         document.write("What happens here..."); 
-        }, 2000); 
+    }, 2000); 
                   
                     
     document.write("Goodbye!");                    
@@ -135,11 +135,11 @@
         function success() {
           var data = JSON.parse(this.responseText);
             console.log(data);
-            }
+        }
     
         function error(err) {
             console.log('Error Occurred :', err);
-            }
+        }
     
         var xhr = new XMLHttpRequest();
         xhr.onload = success;
@@ -237,7 +237,7 @@
                 <img src="images/snowmen.png">
                 <figcaption>
                     <span class="fig_cap_label">Фиг. 4.</span>
-                    <span class="fig_cap_text">[<a href="https://www.google.com/search?q=I+will+call+back+later!&client=ubuntu&hs=nkl&channel=fs&sxsrf=ALeKk01IOBbNQluMQjg7DgkkVB9qlbIABQ:1604991377654&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi31LrnsvfsAhVErxoKHf5kAyUQ_AUoAXoECA0QAw&biw=1294&bih=667#imgrc=0ETVKFeeP4lseM">Snowmen</a>]</span>
+                    <span class="fig_cap_text">[<a href="https://www.google.com/search?q=I+will+call+back+later!&client=ubuntu&hs=nkl&channel=fs&sxsrf=ALeKk01IOBbNQluMQjg7DgkkVB9qlbIABQ:1604991377654&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi31LrnsvfsAhVErxoKHf5kAyUQ_AUoAXoECA0QAw&biw=1294&bih=667#imgrc=0ETVKFeeP4lseM" target="_blank">Snowmen</a>]</span>
                 </figcaption>
                 <br />
                 
@@ -274,7 +274,7 @@
                     В нея се създава обект от тип XMLHTTPRequest, който отваря файла "mycar.html", зарежда функция и в зависимост от обработката
                     прави извикване на myCallBack функцията със съответния аргумент, след което изпраща резултата.
 
-                    В повечето случаи функцията, която приема името на callback функция като параметър, "говори си" с някаква база данни, сваля файл, изпълнява API заявки или  
+                    В повечето случаи функцията, която приема името на callback функция като параметър, "си говори" с някаква база данни, сваля файл, изпълнява API заявки или  
                     върши някаква друга работа, която може да блокира изпълнението на останалата част от кода за доста време.
                     Да си представим, че сваляме някаква снимка. Това обикновено отнема няколко секунди, но ние не искаме изпълнението на други заявки да спира, докато свалянето приключи.
                     Именно callback ще "извика" снимката, след като вече е свалена. 
@@ -367,7 +367,7 @@
                 </ul>
                 <strong>Как правим заявка, изплозвайки <em>fetch()</em>?</strong>
                 Всяка fetch() функция е достъпна през глобалния Window обект. Тя приема един задължителен аргумент- 
-                пътят към ресурса, който искаме да извлечем. Връща обект от тип Promise, независимо дали е успешен, или не.    
+                пътя към ресурса, който искаме да извлечем. Връща обект от тип Promise, независимо дали е успешен, или не.    
                 Ако заявката е успешна, then() функцията получава обект от тип Response, ако се е провалила, catch() функцията 
                 получава обект error. 
                 </p>
@@ -415,7 +415,31 @@
                     аргумент на fetch(). По този начин може да правим персонализирани заявки.  
                 </p>
             </article> 
-     
+
+<pre>
+const myHeaders = new Headers();
+
+const myRequest = new Request('flowers.jpg', {
+  method: 'GET',
+  headers: myHeaders,
+  mode: 'cors',
+  cache: 'default',
+});
+
+fetch(myRequest)
+  .then(response => response.blob())
+  .then(myBlob => {
+    myImage.src = URL.createObjectURL(myBlob);
+  });
+</pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 8.</span>
+    <span class="fig_cap_text">Headers and fetch()[<a href="#sources">11</a>]</span>
+</figcaption> 
+            <p> В примера се показва как вместо да предаваме пътя до ресурса, към който искаме да изпратим заявка,
+                в извикването на fetch(), може да си създадем обект от тип Request чрез Request конструктора
+                и него да предадем като аргумента на метода fetch(). 
+            </p>
             <article id="promises">
                 <h3>Promises</h3> 
                 
@@ -466,7 +490,230 @@
                     алтернативна възможност да потребяваме Promises, имплеметирана в ES2017<a href="https://en.wikipedia.org/wiki/ECMAScript" tarhet="_blank">(ECMAScript)</a>2017, а именно Async/Await.  
                 </p>
             </article>    
-            
+            <p>
+                Следният програмен код добре онагледява използването на callback функциите и съответно като съпоставка
+                работата с Promises. Ключовата разлика е, че при подхода с callback ние обикновено подаваме callback-а
+                като аргумент на друга функция, като впоследствие ще бъде извикан при изпълнение, за да получим някакъв резултат. 
+                Докато при подхода с Promises ние "закачаме" callbacks на върнатия обект от тип Promise. 
+            </p>
+            <div>
+                <strong> Callback подход </strong>
+            </div>
+<pre class="callbacksandpromises">
+    function getMoneyBack(money, callback) {
+        if (typeof money !== 'number') {
+            callback(null, new Error('money is not a number'))
+        } else {
+            callback(money)
+        }
+        }
+        
+        const money = getMoneyBack(1200)
+        console.log(money)
+</pre>
+
+<figcaption>
+    <span class="fig_cap_label">Пр. код 9.</span>
+    <span class="fig_cap_text">Callback example[<a href="#sources">11</a>]</span>
+</figcaption> 
+            <br />
+            <div>
+                <strong> Подход, използващ Promises </strong>
+            </div> 
+<pre class="callbacksandpromises">              
+    function getMoneyBack(money) {
+        return new Promise((resolve, reject) => {
+            if (typeof money !== 'number') {
+            reject(new Error('money is not a number'))
+            } else {
+            resolve(money)
+            }
+        })
+        }
+        
+        getMoneyBack(1200).then((money) => {
+        console.log(money)
+        })
+</pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 10.</span>
+    <span class="fig_cap_text">Promise example[<a href="#sources">11</a>]</span>
+</figcaption> 
+            <p>
+                Ядрото на promises в JavaScript са именно Promise обектите. И въпросът, който може да си зададем отново е     
+                "Защо се нуждаем от promises?". С какво callback подходът не е бил досатъчен за мнозинството от JavaScript разработчици? 
+                Ще покажем фрагмент от пограмен код, където добре се изобравя "кошмарът" на всеки програмист при определена работа с callbacks.
+            </p>
+            <div>
+                <strong >Callback hell </strong>
+            </div>
+<pre class="callbacksandpromises">
+    function getFrogsWithVitalSigns(params, callback) {
+        let frogIds, frogsListWithVitalSignsData
+        
+        api.fetchFrogs(params, (frogs, error) => {
+          if (error) {
+            console.error(error)
+            return
+          } else {
+            frogIds = frogs.map(({ id }) => id)
+            // The list of frogs did not include their
+            // health information, so lets fetch that now
+            api.fetchFrogsVitalSigns(
+              frogIds,
+              (frogsListWithEncryptedVitalSigns, err) => {
+                if (err) {
+                  // do something with error logic
+                } else {
+                  // The list of frogs health info is encrypted.
+                  // Our friend texted us the secret key to use it. 
+                  // This is used to decrypt the list of frogs
+                  //  encrypted health information
+                  api.decryptFrogsListVitalSigns(
+                    frogsListWithEncryptedVitalSigns,
+                    'pepsi',
+                    (data, errorr) => {
+                      if (errorrr) {
+                        throw new Error('Error in the final api call')
+                      } else {
+                        if (Array.isArray(data)) {
+                          frogsListWithVitalSignsData = data
+                        } else {
+                          frogsListWithVitalSignsData = data.map(
+                            ({ vital_signs }) => vital_signs,
+                          )
+                          console.log(frogsListWithVitalSignsData)
+                        }
+                      }
+                    },
+                  )
+                }
+              },
+            )
+          }
+        })
+      }
+      
+      const frogsWithVitalSigns = getFrogsWithVitalSigns({
+        offset: 50,
+      })
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+</pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 11.</span>
+    <span class="fig_cap_text">One point of view[<a href="#sources">11</a>]</span>
+</figcaption> 
+            <br />
+            <div>
+                <strong >Promise solution </strong>
+            </div> 
+<pre class="callbacksandpromises">
+    function getFrogsWithVitalSigns(params, callback) {
+        let frogIds, frogsListWithVitalSignsData
+        
+        api
+          .fetchFrogs(params)
+          .then((frogs) => {
+            frogIds = frogs.map(({ id }) => id)
+            // The list of frogs did not include their health information,
+            //  so lets fetch that now
+            return api.fetchFrogsVitalSigns(frogIds)
+          })
+          .then((frogsListWithEncryptedVitalSigns) => {
+            // The list of frogs health info is encrypted.
+            //  Our friend texted us the secret key to use it.
+            // This is used to decrypt the list of frogs 
+            // encrypted health information
+            return api.decryptFrogsListVitalSigns(
+              frogsListWithEncryptedVitalSigns,
+              'pepsi',
+            )
+          })
+          .then((data) => {
+            if (Array.isArray(data)) {
+              frogsListWithVitalSignsData = data
+            } else {
+              frogsListWithVitalSignsData = data.map(
+                ({ vital_signs }) => vital_signs,
+              )
+              console.log(frogsListWithVitalSignsData)
+            }
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+        })
+      }
+      
+      const frogsWithVitalSigns = getFrogsWithVitalSigns({
+        offset: 50,
+      })
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+</pre>
+<figcaption>
+    <span class="fig_cap_label">Пр. код 12.</span>
+    <span class="fig_cap_text">Another point of view[<a href="#sources">11</a>]</span>
+</figcaption> 
+            <h3> Какво от показаното по-горе ни дава основание да мислим, че <span class="emphasized">Promises</span> в голяма степен
+                 улесняват работата ни? </h3>
+            <p>
+                <ul>
+                    <li>Кодът беше труден за четене
+                        <ul>
+                            <br />
+                            <li>Беше започнал да се движи в две посоки - от върха към дъното и отляво надясно</li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li>Кодът беше станал труден за управление
+                        <ul>
+                            <br />
+                            <li>Не беше ясно какво се случва с все по-дъблокото влагане на кода</li>
+                            <br />
+                            <li>Трябваше винаги да се уверяваме, че без да искаме не сме декларирали променливи
+                                с едно и също име, които вече са били декларирани извън този обхват (това се нарича shadowing, "засенчване")  </li>
+                            <br />
+                            <li>Трябваше да следим за три различни грешки на три различни места</li>
+                            <br />
+                            <li>Трябваше дори да преименуваме всяка грешка, за да сме сигурни, че не "засенчваме"
+                                грешката преди нея. Ако добавяхме още заявки към тези операции, трябваше да мислим 
+                                за допълнителни имена на променливи, които да не се сблъскат и с тези на грешките в нашия програмен обхват (scope)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>
+                    Методът <span class="emphasized">.then</span>, както и методът <span class="emphasized">.catch</span> всъщност ни помогнаха да се справим с тези callback проблеми.
+                </h4>
+                <div>
+                    За работа с резултатите, върнати от Promise обектите, promise конструкторът в JavaScript
+                    има няколко статични метода. А те са: 
+                    <ul> 
+                        <br />
+                        <li><strong>Promise.all</strong></li>
+                        <br />
+                        <li><strong>Promise.race</strong></li>
+                        <br />
+                        <li><strong>Promise.allSettled</strong></li>
+                        <br />
+                        <li><strong>Promise.any</strong></li>
+                    </ul>
+                </div>
+                <h4>
+                    Повече и полезна информация може да се прочете за тях
+                     <a href="https://medium.com/better-programming/callbacks-vs-promises-in-javascript-1f074e93a3b5" target="_blank">
+                        <span class="emphasized">тук.</span></a>
+                </h4>
+            </p>
             <article id="asyncawait">
                 <h3>Aync/Await</h3> 
                 
@@ -491,8 +738,8 @@
                 <p>
                     Да обобщим, първоначалният замисъл и идея за използване на <span class="emphasized">XMLHTTPRequests</span> определено не са били 
                     пряко за нещата, които използваме днес. И в някои случаи неговият API с право може да ни се стори 
-                    доста объркващ. <span class="emphasized">FETCH API</span> ни предла един по-лек и изчистен начин да правим асинхронни заявки и да обработваме отговорите.
-                    Fetch дава възможност да се създаде далеч по-добър API като се използват съвременни елементи на JavaScript, каквито са Prmoises.  
+                    доста объркващ. <span class="emphasized">FETCH API</span> ни предлага един по-лек и изчистен начин да правим асинхронни заявки и да обработваме отговорите.
+                    Fetch дава възможност да се създаде далеч по-добър API като се използват съвременни елементи на JavaScript, каквито са Promises.  
                 </p>
             </article>         
             
@@ -500,70 +747,86 @@
                 <h2>Използвана литература</h2>
 <pre class="sr">
  [1] The Fetch API. A modern replacement for XMLHttpRequest,
- [<a href="https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c">https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c</a>], 
+ [<a href="https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c" target="_blank">https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c</a>], 
  последно посетен на 2020-11-10 
 </pre>
 
 <pre class="sr">
  [2] Fetch API-Web APIs|MDN,
- [<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a>], 
+ последно посетен на 2020-11-10
 </pre>   
 
 <pre class="sr">
  [3] XMLHTTPRequest-Web APIs|MDN, 
- [<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a>], 
+ последно посетен на 2020-11-10
 </pre>   
 
 <pre class="sr">
  [4] Introduction to fetch(), 
- [<a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">https://developers.google.com/web/updates/2015/03/introduction-to-fetch</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch" target="_blank">https://developers.google.com/web/updates/2015/03/introduction-to-fetch</a>], 
+ последно посетен на 2020-11-10
 </pre>  
 
 <pre class="sr">
  [5] JavaScript Async, 
- [<a href="https://www.w3schools.com/js/js_async.asp">https://www.w3schools.com/js/js_async.asp</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://www.w3schools.com/js/js_async.asp" target="_blank">https://www.w3schools.com/js/js_async.asp</a>], 
+ последно посетен на 2020-11-10
 </pre>  
 
 <pre class="sr">
  [6] ECMAScript-Wikipedia, 
- [<a href="https://en.wikipedia.org/wiki/ECMAScript">https://en.wikipedia.org/wiki/ECMAScript</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://en.wikipedia.org/wiki/ECMAScript" target="_blank">https://en.wikipedia.org/wiki/ECMAScript</a>], 
+ последно посетен на 2020-11-10
 </pre>  
 
 <pre class="sr">
  [7] AJAX Introduction, 
- [<a href="https://www.w3schools.com/xml/ajax_intro.asp">https://www.w3schools.com/xml/ajax_intro.asp</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://www.w3schools.com/xml/ajax_intro.asp" target="_blank">https://www.w3schools.com/xml/ajax_intro.asp</a>], 
+ последно посетен на 2020-11-10
 </pre> 
 
 <pre class="sr">
  [8] Callbach Hell, Promises and Async/Await  
- [<a href="https://blog.avenuecode.com/callback-hell-promises-and-async/await">https://blog.avenuecode.com/callback-hell-promises-and-async/await</a>], 
- последно песетен на 2020-11-10
+ [<a href="https://blog.avenuecode.com/callback-hell-promises-and-async/await" target="_blank">https://blog.avenuecode.com/callback-hell-promises-and-async/await</a>], 
+ последно посетен на 2020-11-10
 </pre> 
 
 <pre class="sr">
  [9] Callback Hell 
- [<a href="http://callbackhell.com/">http://callbackhell.com/</a>], 
- последно песетен на 2020-11-10
+ [<a href="http://callbackhell.com/" target="_blank">http://callbackhell.com/</a>], 
+ последно посетен на 2020-11-10
 </pre> 
 
 <pre class="sr">
  [10] Synchronous vs. Asynchronous Request Handling|Trigent-Vintage
- [<a href="https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/">https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/</a>],
+ [<a href="https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/" target="_blank">https://blog.trigent.com/synchronous-vs-asynchronous-request-handling/</a>],
+ последно посетен на 2020-11-10
+</pre> 
+
+<pre class="sr">
+ [11] Callbacks vs. Promises in JavaScript|by jsmanifest|Better Programming|Medium
+ [<a href="https://medium.com/better-programming/callbacks-vs-promises-in-javascript-1f074e93a3b5" target="_blank">https://medium.com/better-programming/callbacks-vs-promises-in-javascript-1f074e93a3b5</a>],
+ последно посетен на 2020-11-30 
+</pre> 
+
+<pre class="sr">
+ [12] Should you learn JavaScript|by Diego Velasquez Castro|Data Driven Investor|Meduim 
+ [<a href="https://medium.com/datadriveninvestor/should-you-learn-javascript-1f07ba11c70d" target="_blank">https://medium.com/datadriveninvestor/should-you-learn-javascript-1f07ba11c70d</a>], 
+ последно посетен на 2020-11-10
 </pre> 
 
             <article  id="author">
                             <h2>Автор</h2>
                             <ul class="aut">
+                                <li>име: Владислава Венциславова Маркова</li>
+                                <li>фн: 81271</li>
+                                <li>e-mail: vladislavam1996@gmail.com</li>
                                 <li>спец. Компютърни науки, IV курс</li>
                                 <li>курс: Web технологии</li>
                                 <li>лектор: доц. Милен Петров</li>
-                                <li>2020 г.</li>
+                                <li>зимен семестър, 2020 г.</li>
                             </ul>	
             </article>     
         </div>
